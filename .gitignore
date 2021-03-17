@@ -1,0 +1,12 @@
+.*.swp
+.DS_Store
+*.o
+*.pyc
+*.out
+*.class
+*.code-workspace
+.idea
+out/
+*.iml
+.gradle/
+venv/
