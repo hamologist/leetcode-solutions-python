@@ -10,3 +10,5 @@ out/
 *.iml
 .gradle/
 venv/
+node_modules/
+package-lock.json
