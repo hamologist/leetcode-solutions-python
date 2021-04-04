@@ -1,6 +1,6 @@
 function generateParenthesis(n: number): string[] {
   let vals: Array<string> = [];
-  function inner(left: number, right: number, acc: string) {
+  (function inner(left: number, right: number, acc: string): void {
     if (left == 0 && right == 0) {
       vals.push(acc);
       return;
@@ -12,9 +12,8 @@ function generateParenthesis(n: number): string[] {
       inner(left, right-1, `${acc})`);
     }
     inner(left-1, right, `${acc}(`);
-  }
+  })(n-1, n, "(");
 
-  inner(n-1, n, "(");
   return vals;
 }
 
