@@ -1,11 +1,4 @@
-class ListNode {
-    val: number
-    next: ListNode | null
-    constructor(val?: number, next?: ListNode | null) {
-        this.val = (val===undefined ? 0 : val)
-        this.next = (next===undefined ? null : next)
-    }
-}
+import { arrayToListNode, ListNode } from "../../../_shared/typescript/LinkedList";
 
 function isPalindrome(head: ListNode | null): boolean {
   let asList: Array<number> = [];
@@ -28,12 +21,6 @@ function isPalindrome(head: ListNode | null): boolean {
 
 console.log(
   isPalindrome(
-    new ListNode(1,
-      new ListNode(2,
-        new ListNode(2,
-          new ListNode(1)
-        )
-      )
-    )
+    arrayToListNode([1, 2, 2, 1])
   )
 )

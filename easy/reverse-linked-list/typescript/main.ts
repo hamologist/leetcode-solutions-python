@@ -1,22 +1,4 @@
-class ListNode {
-    val: number
-    next: ListNode | null
-    constructor(val?: number, next?: ListNode | null) {
-        this.val = (val===undefined ? 0 : val)
-        this.next = (next===undefined ? null : next)
-    }
-
-    toArray(): Array<number> {
-      let head: ListNode | null = this;
-      let list: Array<number> = [];
-      while (head !== null) {
-        list.push(head.val);
-        head = head.next;
-      }
-
-      return list;
-    }
-}
+import { arrayToListNode, ListNode } from "../../../_shared/typescript/LinkedList";
 
 function reverseList(head: ListNode | null): ListNode | null {
   let prev: ListNode | null = null;
@@ -32,14 +14,6 @@ function reverseList(head: ListNode | null): ListNode | null {
 
 console.log(
   reverseList(
-    new ListNode(1,
-      new ListNode(2,
-        new ListNode(3,
-          new ListNode(4,
-            new ListNode(5)
-          )
-        )
-      )
-    )
-  ).toArray()
+    arrayToListNode([1, 2, 3, 4, 5])
+  )?.toArray()
 )
