@@ -17,17 +17,19 @@ function rotate(matrix: number[][]): void {
   }
 }
 
-let input = [
-  [1, 2, 3],
-  [4, 5, 6],
-  [7, 8, 9],
-];
-rotate(input);
-console.log(input);
+(() => {
+  let input = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ];
+  rotate(input);
+  console.log(input);
 
-input = [
-  [1, 2],
-  [3, 4],
-]
-rotate(input);
-console.log(input);
+  input = [
+    [1, 2],
+    [3, 4],
+  ]
+  rotate(input);
+  console.log(input);
+})()
