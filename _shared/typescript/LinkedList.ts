@@ -20,10 +20,14 @@ export class ListNode {
 }
 
 export function arrayToListNode(nums: number[]): ListNode | null {
-  if (nums.length === 0) {
-    return null;
+  let current: ListNode | null = null;
+  let next: ListNode | null = null;
+  for (let i = nums.length - 1; i >= 0; i--) {
+    current = new ListNode(nums[i]);
+    current.next = next;
+    next = current;
   }
 
-  return new ListNode(nums[0], arrayToListNode(nums.slice(1)));
+  return current;
 }
 
