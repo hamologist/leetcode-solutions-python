@@ -1,14 +1,4 @@
-// @ts-ignore
-class TreeNode {
-    val: number
-    left: TreeNode | null
-    right: TreeNode | null
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-        this.val = (val===undefined ? 0 : val)
-        this.left = (left===undefined ? null : left)
-        this.right = (right===undefined ? null : right)
-    }
-}
+import { inOrder, TreeNode } from "../../../_shared/typescript/TreeNode";
 
 function sortedArrayToBST(nums: number[]): TreeNode {
     return (function inner(nums: number[]): TreeNode | null {
@@ -21,22 +11,6 @@ function sortedArrayToBST(nums: number[]): TreeNode {
           right.length > 0 ? inner(nums.slice(middle+1)) : null,
         )
     })(nums) || new TreeNode();
-}
-
-function inOrder(head: TreeNode) {
-    const vals: number[] = [];
-
-    (function inner(head: TreeNode | null) {
-        if (head === null) {
-            return;
-        }
-
-        inner(head.left);
-        vals.push(head.val);
-        inner(head.right);
-    })(head)
-
-    return vals;
 }
 
 console.log(inOrder(sortedArrayToBST([-10, -3, 0, 5, 9])));

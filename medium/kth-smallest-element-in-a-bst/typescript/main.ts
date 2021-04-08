@@ -1,14 +1,4 @@
-// @ts-ignore
-class TreeNode {
-    val: number
-    left: TreeNode | null
-    right: TreeNode | null
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-        this.val = (val===undefined ? 0 : val)
-        this.left = (left===undefined ? null : left)
-        this.right = (right===undefined ? null : right)
-    }
-}
+import { TreeNode } from "../../../_shared/typescript/TreeNode";
 
 function kthSmallest(root: TreeNode, k: number): number {
     let val: number = root.val;
