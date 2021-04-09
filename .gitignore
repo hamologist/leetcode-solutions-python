@@ -6,6 +6,7 @@
 *.class
 *.code-workspace
 .idea
+.vscode
 out/
 *.iml
 .gradle/

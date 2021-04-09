@@ -30,51 +30,50 @@ class NestedIterator {
 
   constructor(nestedList: NestedInteger[]) {
     this.nestedList = nestedList;
-    this.current = 0;
+    this.current = -1;
     this.child = null;
   }
 
   hasNext(): boolean {
-    for (let i = this.current; i < this.nestedList.length; i++) {
+    const inner = (current: number): boolean => {
       if (this.child !== null && this.child.hasNext()) {
         return true;
       }
 
-      const nestedInteger = this.nestedList[i];
-      if (nestedInteger.isInteger()) {
+      if (current + 1 >= this.nestedList.length) {
+        return false;
+      }
+      const next = this.nestedList[current + 1];
+      if (next.isInteger()) {
         return true;
       }
-      if (new NestedIterator(nestedInteger.getList()).hasNext()) {
+      if (new NestedIterator(next.getList()).hasNext()) {
         return true;
       }
-    }
 
-    return false;
+      return inner(current + 1);
+    };
+
+    return inner(this.current);
   }
 
   next(): number {
-    if (this.child !== null && this.child.hasNext()) {
-      const childValue = this.child.next();
-      if (!this.child.hasNext()) {
-        this.current++;
-        this.child = null;
+    const inner = (): number => {
+      if (this.child !== null && this.child.hasNext()) {
+        return this.child.next();
       }
-      return childValue;
+      this.child = null;
+      this.current++;
+
+      const nestedInteger = this.nestedList[this.current];
+      if (nestedInteger.isInteger()) {
+        return nestedInteger.getInteger() as number;
+      }
+      this.child = new NestedIterator(nestedInteger.getList());
+      return inner();
     }
 
-    const nestedInteger = this.nestedList[this.current];
-    if (nestedInteger.isInteger()) {
-      this.current++;
-      return nestedInteger.getInteger() as number;
-    } else {
-      const child = new NestedIterator(nestedInteger.getList());
-      if (child.hasNext()) {
-        this.child = child;
-        return this.next();
-      }
-      this.current++;
-      return this.next();
-    }
+    return inner();
   }
 }
 
