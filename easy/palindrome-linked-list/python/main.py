@@ -1,7 +1,4 @@
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from _shared.python.linked_list import ListNode, list_to_list_node
 
 
 class Solution:
@@ -16,4 +13,4 @@ class Solution:
 
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.isPalindrome(ListNode(1, ListNode(2, ListNode(2, ListNode(1))))))
+    print(solution.isPalindrome(list_to_list_node([1, 2, 2, 1])))

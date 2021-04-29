@@ -1,10 +1,6 @@
 from typing import Optional
 
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next: Optional[ListNode] = next
+from _shared.python.linked_list import ListNode, list_to_list_node
 
 
 class Solution:
@@ -45,23 +41,13 @@ class Solution:
         return head
 
 
-def linked_list_to_list(node: ListNode):
-    _return = []
-
-    while node is not None:
-        _return.append(node.val)
-        node = node.next
-
-    return _return
-
-
 if __name__ == '__main__':
     solution = Solution()
 
-    _input = ListNode(1, ListNode(2, ListNode(6, ListNode(3, ListNode(4, ListNode(5, ListNode(6)))))))
-    print(linked_list_to_list(solution.removeElements(_input, 6)))
+    _input = list_to_list_node([1, 2, 6, 3, 4, 5, 6])
+    print(solution.removeElements(_input, 6).to_list())
 
-    print(linked_list_to_list(solution.removeElements(None, 1)))
+    print(solution.removeElements(None, 1))
 
     _input = ListNode(7, ListNode(7, ListNode(7, ListNode(7))))
-    print(linked_list_to_list(solution.removeElements(_input, 7)))
+    print(solution.removeElements(_input, 7))

@@ -1,7 +1,4 @@
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from _shared.python.linked_list import ListNode, list_to_list_node
 
 
 class Solution:
@@ -23,33 +20,25 @@ class Solution:
         return ans
 
 
-def print_list(ln: ListNode):
-    while ln is not None:
-        print(ln.val, end="")
-        ln = ln.next
-    print()
-
-
 if __name__ == '__main__':
     solution = Solution()
 
-    _l1 = ListNode(2, ListNode(4, ListNode(3)))
-    _l2 = ListNode(5, ListNode(6, ListNode(4)))
+    _l1 = list_to_list_node([2, 4, 3])
+    _l2 = list_to_list_node([5, 6, 4])
     print(solution.reverse_list(_l1))
     print(solution.reverse_list(_l2))
-    print_list(solution.addTwoNumbers(_l1, _l2))
+    print("".join([str(num) for num in solution.addTwoNumbers(_l1, _l2).to_list()]))
     print()
 
-    _l1 = ListNode(0)
-    _l2 = ListNode(0)
+    _l1 = list_to_list_node([0])
+    _l2 = list_to_list_node([0])
     print(solution.reverse_list(_l1))
     print(solution.reverse_list(_l2))
-    print_list(solution.addTwoNumbers(_l1, _l2))
+    print("".join([str(num) for num in solution.addTwoNumbers(_l1, _l2).to_list()]))
     print()
 
-    _l1 = ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9, ListNode(9)))))))
-    _l2 = ListNode(9, ListNode(9, ListNode(9, ListNode(9))))
+    _l1 = list_to_list_node([9, 9, 9, 9, 9, 9, 9])
+    _l2 = list_to_list_node([9, 9, 9, 9])
     print(solution.reverse_list(_l1))
     print(solution.reverse_list(_l2))
-    print_list(solution.addTwoNumbers(_l1, _l2))
-    print()
+    print("".join([str(num) for num in solution.addTwoNumbers(_l1, _l2).to_list()]))

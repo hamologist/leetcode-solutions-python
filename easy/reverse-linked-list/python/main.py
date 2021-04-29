@@ -1,10 +1,4 @@
-from typing import List
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from _shared.python.linked_list import ListNode, list_to_list_node
 
 
 class Solution:
@@ -23,16 +17,7 @@ class Solution:
         return prev
 
 
-def list_node_to_list(head: ListNode) -> List[int]:
-    _return = []
-    while head is not None:
-        _return.append(head.val)
-        head = head.next
-
-    return _return
-
-
 if __name__ == '__main__':
     solution = Solution()
-    _input = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-    print(list_node_to_list(solution.reverseList(_input)))
+    _input = list_to_list_node([1, 2, 3, 4, 5])
+    print(solution.reverseList(_input).to_list())
