@@ -49,5 +49,5 @@ if __name__ == '__main__':
 
     print(solution.removeElements(None, 1))
 
-    _input = ListNode(7, ListNode(7, ListNode(7, ListNode(7))))
+    _input = list_to_list_node([7, 7, 7, 7])
     print(solution.removeElements(_input, 7))
