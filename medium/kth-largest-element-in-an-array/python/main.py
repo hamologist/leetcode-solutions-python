@@ -1,10 +1,13 @@
-from typing import List
+import heapq
 
 from _shared.python.test import BaseTest
 
 
 class Solution:
-    def findKthLargest(self, nums: List[int], k: int) -> int:
+    def findKthLargest(self, nums: list[int], k: int) -> int:
+        return heapq.nlargest(k, nums)[-1]
+
+    def findKthLargestWithSort(self, nums: list[int], k: int) -> int:
         return sorted(nums)[-k]
 
 

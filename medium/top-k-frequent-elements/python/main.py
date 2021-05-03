@@ -1,19 +1,36 @@
+import heapq
 from collections import Counter
-from typing import Dict, List, NamedTuple
+from typing import NamedTuple
 
 
 class Solution:
 
-    def topKFrequentCounter(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequentCounter(self, nums: list[int], k: int) -> list[int]:
         return [count[0] for count in Counter(nums).most_common(k)]
 
-    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+        counter: dict[int, int] = {}
+
+        for num in nums:
+            counter[num] = counter.get(num, 0) + 1
+
+        return heapq.nlargest(k, counter.keys(), key=counter.get)
+
+    def topKFrequentWithSortedCount(self, nums: list[int], k: int) -> list[int]:
+        counter: dict[int, int] = {}
+
+        for num in nums:
+            counter[num] = counter.get(num, 0) + 1
+
+        return sorted(counter, key=counter.get, reverse=True)[:k]
+
+    def topKFrequentWithNamedTuple(self, nums: list[int], k: int) -> list[int]:
         class TopK(NamedTuple):
             num: int
             count: int
 
-        top_k: List[TopK] = []
-        counter: Dict[int, int] = {}
+        top_k: list[TopK] = []
+        counter: dict[int, int] = {}
 
         for num in nums:
             counter[num] = counter.get(num, 0) + 1
@@ -25,10 +42,10 @@ class Solution:
 
         return [k.num for k in top_k[0:k]]
 
-    def topKFrequentLookups(self, nums: List[int], k: int) -> List[int]:
+    def topKFrequentLookups(self, nums: list[int], k: int) -> list[int]:
         top_k = []
-        counter: Dict[int, int] = {}
-        k_lookup: Dict[int, int] = {}
+        counter: dict[int, int] = {}
+        k_lookup: dict[int, int] = {}
 
         for num in nums:
             current_count = counter.get(num, 0)
