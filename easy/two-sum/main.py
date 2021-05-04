@@ -3,6 +3,15 @@ from typing import List
 
 class Solution(object):
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        lookup = {}
+        for i in range(0, len(nums)):
+            num = nums[i]
+            if target - num in lookup:
+                return [i, lookup[target - num]]
+
+            lookup[num] = i
+
+    def twoSumOld(self, nums: List[int], target: int) -> List[int]:
         num_map = {}
         for pos in range(0, len(nums)):
             num = nums[pos]
