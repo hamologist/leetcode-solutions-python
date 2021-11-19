@@ -1,4 +1,4 @@
-from _shared.python.linked_list import ListNode, list_to_list_node
+from _shared.linked_list import ListNode, list_to_list_node
 
 
 class Solution:
