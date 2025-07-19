@@ -8,5 +8,3 @@ class Solution:
                 answer += num
 
         return answer
-
-print(Solution().differenceOfSums(10, 3))
